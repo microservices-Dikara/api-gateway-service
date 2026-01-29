@@ -6,7 +6,6 @@ spring:
     name: api-gateway
   main:
     web-application-type: reactive
-
   cloud:
     gateway:
       routes:
@@ -24,9 +23,15 @@ spring:
             - StripPrefix=1
 
 eureka:
-  client:
+ client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+      #defaultZone: http://eureka-server:8761/eureka
 
-jwt:
-  secret: my-super-secret-key-min-32-character
+security:
+ jwt:
+   secret: 256-bit-super-secret-key-for-portfolio
+   access-expiration: 900
+   refresh-expiration: 604800
+
+
